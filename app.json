@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "15acae64-1938-4e34-a0b3-89e11c6575c1"
+      }
+    },
+    "owner": "laikin"
   }
 }
