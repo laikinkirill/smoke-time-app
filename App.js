@@ -1,6 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useState } from "react";
+import Topbar from "./src/components/Topbar/Topbar";
+import Bottombar from "./src/components/Bottombar/Bottombar";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +29,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Topbar />
       <Text style={styles.header}>{сurrentDate}</Text>
       <Text style={styles.description}>Нажмите, чтобы считать перекуры</Text>
       <View style={styles.box}>
@@ -50,15 +53,19 @@ export default function App() {
         </Text>
       </Pressable>
 
-      {timeList.map((item, index) => (
-        <View key={index}>
-          <Text style={styles.listItem}>
-            № {index}: {item}
-          </Text>
-        </View>
-      ))}
+      <View style={styles.list}>
+        {timeList.map((item, index) => (
+          <View key={index} style={styles.listItem}>
+            <Text style={styles.listItem}>
+              № {index}: {item}
+            </Text>
+          </View>
+        ))}
+      </View>
 
       <StatusBar style="auto" />
+
+      <Bottombar />
     </View>
   );
 }
@@ -74,7 +81,7 @@ const styles = StyleSheet.create({
   header: {
     color: "#fff",
     fontSize: 32,
-    marginBottom: 100,
+    marginBottom: 80,
   },
 
   box: {
@@ -121,12 +128,13 @@ const styles = StyleSheet.create({
   list: {
     backgroundColor: "#161616",
     width: 100 + "%",
-    padding: 20,
+    padding: 10,
     marginTop: 20,
     display: "flex",
     justifyContent: "top",
-    alignItems: "center",
+    alignItems: "left",
     height: 200,
+    overflow: "scroll",
   },
 
   listItem: {
@@ -135,6 +143,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     backgroundColor: "#212121",
     marginBottom: 5,
-    padding: 10,
+    padding: 2,
   },
 });
